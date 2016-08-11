@@ -1,12 +1,46 @@
+const $ = require('../resources/jquery-3.1.0.min.js');
 const ipcRenderer = require('electron').ipcRenderer
+let currentMessages = require('../services/messages.js');
 
-let preferences = document.getElementById('preferences');
-let quit = document.getElementById('quit');
+$(document).ready(function(){
 
-preferences.addEventListener('click', function(){
-  ipcRenderer.send('show-prefs');
-});
+  console.log(currentMessages.messages);
 
-quit.addEventListener('click', function(){
-  ipcRenderer.send('quit');
+  currentMessages.messages.forEach(function(message){
+    $('#messages').append(`
+      <div>
+        <p style="font-weight:bold;">${message.user}</p>
+        <p>${message.text}</p>
+      </div>
+      `);
+  });
+
+  // Object
+  // channel
+  // :
+  // "C1YSPCUQK"
+  // team
+  // :
+  // "T1YU0S4TE"
+  // text
+  // :
+  // "#now"
+  // ts
+  // :
+  // "1470790572.000044"
+  // type
+  // :
+  // "message"
+  // user
+  // :
+  // "U1Z0MHRGB"
+
+  $('#preferences').on('click', function(){
+    ipcRenderer.send('show-prefs');
+  });
+
+  $('#quit').on('click', function(){
+    ipcRenderer.send('quit');
+  });
+
 });

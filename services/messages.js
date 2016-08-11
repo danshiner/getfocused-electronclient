@@ -1,20 +1,31 @@
+var messageEmitter = new (require('events').EventEmitter);
+
 function addMessage(message){
-  currentMessages[message.user] = message;
+  message.read = false;
+  messages.push(message);
+  // console.log('message.user: '+message.user);
+  // console.log('message: '+JSON.stringify(messages));
+  // console.log('messages: '+JSON.stringify(message));
+  messageEmitter.emit('new', message);
+  messageEmitter.emit('status-change');
+
 }
 
 function deleteMessage(message){
-  delete currentMessages[message.user] = message;
+  // delete messages[message.user] = message;
+  // Causing problems!
 }
 
-var currentMessages = {
-    'U1Z0MHRGB' :  {"type":"message","channel":"C1YSPCUQK","user":"U1Z0MHRGB","text":"#now","ts":"1470790572.000044","team":"T1YU0S4TE"},
-    'U1Z0MHRGB' :  {"type":"message","channel":"C1YSPCUQK","user":"U1Z0MHRGB","text":"hello #now","ts":"1470790519.000043","team":"T1YU0S4TE"}
-}
+var messages = [
+  {"type":"message","channel":"C1YSPCUQK","user":"U1Z0MHRGB","text":"#now","ts":"1470790572.000044","team":"T1YU0S4TE","unread":true},
+  {"type":"message","channel":"C1YSPCUQK","user":"U1Z0MHRGB","text":"hello #now","ts":"1470790519.000043","team":"T1YU0S4TE","unread":true}
+]
 
 module.exports = {
   addMessage : addMessage,
   deleteMessage : deleteMessage,
-  currentMessages : currentMessages
+  messages : messages,
+  messageEmitter : messageEmitter
 };
 
 

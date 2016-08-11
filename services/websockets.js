@@ -1,8 +1,8 @@
 // Require the Slack API client (light wrapper on slack RTM API)
 var RtmClient = require('@slack/client').RtmClient;
-let notifications = require('./notifications.js');
 var token = 'xoxp-66952888932-66962702693-67830999317-c6843cf293'
 //var token = process.env.SLACK_API_TOKEN || ''; COME BACK AND FIX THIS
+let currentMessages = require('./messages.js');
 
 function launchRtmClient(){
   // Create the RTM Client
@@ -19,13 +19,14 @@ function launchRtmClient(){
 
   // Create events listener, including notifications
 
-  rtm.on(RTM_EVENTS.MESSAGE, currentMessages.addMessage);
-  // setTimeout(test, 6000);
-  // rtm.on(RTM_EVENTS.MESSAGE, notifications.notifyMain);
-
+  rtm.on(RTM_EVENTS.MESSAGE, function(message){
+    let keyword = /#now/i;
+    if (keyword.test(message.text)) {
+      currentMessages.addMessage(message)
+      console.log(currentMessages.messages); // not all messages are being stored!
+    };
+  });
 }
-// function test(){console.log('here is the message:'+JSON.stringify(messages.currentMessages))}
-
 
 // Come back and add multi-OS support when you have time https://github.com/mikaelbr/node-notifier#use-inside-tmux-session
 
