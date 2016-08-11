@@ -15,26 +15,6 @@ $(document).ready(function(){
       `);
   });
 
-  // Object
-  // channel
-  // :
-  // "C1YSPCUQK"
-  // team
-  // :
-  // "T1YU0S4TE"
-  // text
-  // :
-  // "#now"
-  // ts
-  // :
-  // "1470790572.000044"
-  // type
-  // :
-  // "message"
-  // user
-  // :
-  // "U1Z0MHRGB"
-
   $('#preferences').on('click', function(){
     ipcRenderer.send('show-prefs');
   });
@@ -44,3 +24,24 @@ $(document).ready(function(){
   });
 
 });
+
+
+// Object
+// channel
+// :
+// "C1YSPCUQK"
+// team
+// :
+// "T1YU0S4TE"
+// text
+// :
+// "#now"
+// ts
+// :
+// "1470790572.000044"
+// type
+// :
+// "message"
+// user
+// :
+// "U1Z0MHRGB"

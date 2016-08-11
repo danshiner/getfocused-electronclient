@@ -1,14 +1,15 @@
 var messageEmitter = new (require('events').EventEmitter);
 
 function addMessage(message){
-  message.read = false;
-  messages.push(message);
-  // console.log('message.user: '+message.user);
-  // console.log('message: '+JSON.stringify(messages));
-  // console.log('messages: '+JSON.stringify(message));
-  messageEmitter.emit('new', message);
-  messageEmitter.emit('status-change');
 
+  // mark the new message as unread (add unread element to slack message object)
+  message.unread = true;
+
+  // add message to messages array
+  messages.push(message);
+
+  // emit event to notifier to indicate that a new message has arrived
+  messageEmitter.emit('new', message);
 }
 
 function deleteMessage(message){
@@ -17,8 +18,8 @@ function deleteMessage(message){
 }
 
 var messages = [
-  {"type":"message","channel":"C1YSPCUQK","user":"U1Z0MHRGB","text":"#now","ts":"1470790572.000044","team":"T1YU0S4TE","unread":true},
-  {"type":"message","channel":"C1YSPCUQK","user":"U1Z0MHRGB","text":"hello #now","ts":"1470790519.000043","team":"T1YU0S4TE","unread":true}
+  {"type":"message","channel":"C1YSPCUQK","user":"U1Z0MHRGB","text":"#now","ts":"1470790572.000044","team":"T1YU0S4TE",unread:true},
+  {"type":"message","channel":"C1YSPCUQK","user":"U1Z0MHRGB","text":"hello #now","ts":"1470790519.000043","team":"T1YU0S4TE",unread:true}
 ]
 
 module.exports = {
@@ -27,7 +28,3 @@ module.exports = {
   messages : messages,
   messageEmitter : messageEmitter
 };
-
-
-// VS EXPORT?
-// sample message for reference {"type":"message","channel":"C1YSPCUQK","user":"U1Z0MHRGB","text":"#now","ts":"1470790572.000044","team":"T1YU0S4TE"}

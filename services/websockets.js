@@ -18,7 +18,6 @@ function launchRtmClient(){
   });
 
   // Create events listener, including notifications
-
   rtm.on(RTM_EVENTS.MESSAGE, function(message){
     let keyword = /#now/i;
     if (keyword.test(message.text)) {

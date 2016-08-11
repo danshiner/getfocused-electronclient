@@ -14,7 +14,7 @@ let options = {
   index: `file://${__dirname}/views/main.html`,
   width: 375,
   height: 300,
-  icon: `${__dirname}/resources/images/iconUnread.png`
+  icon: `${__dirname}/resources/images/iconRead.png`
 };
 var mb = menubar(options);
 
@@ -25,7 +25,7 @@ mb.on('ready', function ready() {
   websockets.launchRtmClient();
 
   // Start the notifications listener
-  notifications.notificationListener();
+  notifications.notificationListener(mb);
 
   // IPC events send from renderer:
 
@@ -33,10 +33,6 @@ mb.on('ready', function ready() {
   ipcMain.on('show-prefs', function(){
     let prefsWindow = new BrowserWindow({ width: 400, height: 400 });
     prefsWindow.loadURL(`file://${__dirname}/views/prefs.html`);
-
-    iconPath = `./resources/images/iconRead.png`
-    mb.tray.setImage(iconPath); // CONTRIBUTE: TELL EVERYONE THAT THISIS POSSIBLE
-    // mb.emit('read');
   });
 
   // When quit is sent, quit the app.
@@ -44,11 +40,12 @@ mb.on('ready', function ready() {
     app.quit();
   });
 
+  ipcMain.on('change-icon', function(){
+    mb.tray.setImage(`./resources/images/iconRead.png`);
+  });
+
 })
 
-
-
-mb.on('after-create-window', function(){
-  // mb.setOption('icon', `${__dirname}/views/iconRead.png`)
-  // mb.window.openDevTools();
+mb.on('after-show', function(){
+  mb.tray.setImage(`./resources/images/iconRead.png`);
 });
