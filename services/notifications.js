@@ -1,11 +1,10 @@
 const notifier = require('node-notifier');
-let currentMessages = require('./messages.js');
 const ipcRenderer = require('electron').ipcRenderer
-
+const messageHandler = require('./messageHandler.js');
 
 function notificationListener(mb){
 
-  currentMessages.messageEmitter.on('new', function(message){
+  messageHandler.messageEmitter.on('new', function(message){
     console.log('message: '+JSON.stringify(message));
     notifier.notify({
       'title': `Message from ${message.user}`,
@@ -14,7 +13,7 @@ function notificationListener(mb){
     mb.tray.setImage(`./resources/images/iconUnread.png`);
   });
 
-  currentMessages.messageEmitter.on('all-read', function(){
+  messageHandler.messageEmitter.on('all-read', function(){
     mb.tray.setImage(`./resources/images/iconRead.png`);
   });
 

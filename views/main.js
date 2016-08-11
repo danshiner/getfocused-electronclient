@@ -1,6 +1,5 @@
 const $ = require('../resources/jquery-3.1.0.min.js');
 const ipcRenderer = require('electron').ipcRenderer
-let currentMessages = require('../services/messages.js');
 
 $(document).ready(function(){
 

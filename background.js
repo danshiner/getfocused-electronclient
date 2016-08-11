@@ -4,9 +4,8 @@ const ipcMain = require('electron').ipcMain
 const {app, BrowserWindow} = require('electron')
 
 // Services
-const websockets = require('./services/websockets.js')
 const notifications = require('./services/notifications.js');
-// const messages = require('./services/messages.js')
+const messageHandler = require('./services/messageHandler.js');
 
 // Create menubar
 let options = {
@@ -22,7 +21,7 @@ var mb = menubar(options);
 mb.on('ready', function ready() {
 
   // Start websockets client
-  websockets.launchRtmClient();
+  messageHandler.launchRtmClient();
 
   // Start the notifications listener
   notifications.notificationListener(mb);
