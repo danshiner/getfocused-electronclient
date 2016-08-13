@@ -12,6 +12,10 @@ const low = require('lowdb');
 const fileAsync = require('lowdb/lib/file-async');
 const db = low('db.json', { storage: require('lowdb/lib/file-async') });
 
+// const db = function(){
+//   return low('db.json', { storage: require('lowdb/lib/file-async')})
+// };
+
 
 // Create menubar
 let options = {
@@ -34,11 +38,11 @@ mb.on('ready', function ready() {
   // STARTUP PROCESSES
 
   // Start websockets client
-  messageHandler.launchRtmClient();
+  messageHandler.launchRtmClient(db);
   // Start the notifications listener
   notifications.notificationListener(mb);
   // Load the messages from the db and send to the window
-  messages = db.get('messages').value();
+  // messages = db.get('messages').value();
 
   // IPC EVENTS SENT FROM RENDERERS
 
@@ -61,11 +65,13 @@ mb.on('ready', function ready() {
 
   // Send the most recent version of messages every time the window is shown
   mb.on('show', function(){
+    messages = db.get('messages').value();
     mb.window.webContents.send('update', messages);
+    console.log(messages);
   });
   // Mark all messages as read after show
   mb.on('after-show', function(){
-    //must use messageHandler.messageEmitter becasue cannot use mb.window.webContents.send to talk to notifications.js (only works on renderer processes)
+    //must use messageHandler.messageEmitter because cannot use mb.window.webContents.send to talk to notifications.js (only works on renderer processes)
     messageHandler.messageEmitter.emit('all-read');
   });
 

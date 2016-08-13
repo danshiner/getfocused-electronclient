@@ -53,6 +53,69 @@
       "ts": "1471058955.000006",
       "team": "T1YU0S4TE",
       "unread": true
+    },
+    {
+      "type": "message",
+      "channel": "C1YSPCUQK",
+      "user": "U1Z0MHRGB",
+      "text": "hello #now",
+      "ts": "1471114352.000002",
+      "team": "T1YU0S4TE",
+      "unread": true
+    },
+    {
+      "type": "message",
+      "channel": "C1YSPCUQK",
+      "user": "U1Z0MHRGB",
+      "text": "what is up #now",
+      "ts": "1471114371.000003",
+      "team": "T1YU0S4TE",
+      "unread": true
+    },
+    {
+      "type": "message",
+      "channel": "C1YSPCUQK",
+      "user": "U1Z0MHRGB",
+      "text": "how are you #now",
+      "ts": "1471114439.000004",
+      "team": "T1YU0S4TE",
+      "unread": true
+    },
+    {
+      "type": "message",
+      "channel": "C1YSPCUQK",
+      "user": "U1Z0MHRGB",
+      "text": "j #now",
+      "ts": "1471114679.000005",
+      "team": "T1YU0S4TE",
+      "unread": true
+    },
+    {
+      "type": "message",
+      "channel": "C1YSPCUQK",
+      "user": "U1Z0MHRGB",
+      "text": "did we do it #now",
+      "ts": "1471115495.000007",
+      "team": "T1YU0S4TE",
+      "unread": true
+    },
+    {
+      "type": "message",
+      "channel": "C1YSPCUQK",
+      "user": "U1Z0MHRGB",
+      "text": "does this really work #now",
+      "ts": "1471115511.000008",
+      "team": "T1YU0S4TE",
+      "unread": true
+    },
+    {
+      "type": "message",
+      "channel": "C1YSPCUQK",
+      "user": "U1Z0MHRGB",
+      "text": "is j the fucking man #now",
+      "ts": "1471115522.000009",
+      "team": "T1YU0S4TE",
+      "unread": true
     }
   ],
   "user": {}

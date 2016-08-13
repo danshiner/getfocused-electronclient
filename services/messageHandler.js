@@ -15,7 +15,7 @@ const db = low('db.json', { storage: require('lowdb/lib/file-async') });
 // Create tables
 db.defaults({ messages : [], user: {} }).value();
 
-function launchRtmClient(){
+function launchRtmClient(db){
   // Start the RTM client
   var RTM_EVENTS = require('@slack/client').RTM_EVENTS;
   rtm.start();
@@ -30,7 +30,7 @@ function launchRtmClient(){
   rtm.on(RTM_EVENTS.MESSAGE, function(message){
     let keyword = /#now/i;
     if (keyword.test(message.text)) {
-      addMessage(message);
+      addMessage(db, message);
     };
   });
 }
@@ -49,7 +49,7 @@ function sendMessage(messageData){
   });
 }
 
-function addMessage(message){
+function addMessage(db, message){
   // mark the new message as unread (add unread element to slack message object)
   message.unread = true;
   // add message to messages array
