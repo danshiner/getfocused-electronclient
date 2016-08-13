@@ -1,0 +1,59 @@
+{
+  "messages": [
+    {
+      "type": "message",
+      "channel": "C1YSPCUQK",
+      "user": "U1Z0MHRGB",
+      "text": "hello #now",
+      "ts": "1470958748.000009",
+      "team": "T1YU0S4TE",
+      "unread": true
+    },
+    {
+      "type": "message",
+      "channel": "C1YSPCUQK",
+      "user": "U1Z0MHRGB",
+      "text": "and now #now",
+      "ts": "1470958759.000010",
+      "team": "T1YU0S4TE",
+      "unread": true
+    },
+    {
+      "type": "message",
+      "channel": "C1YSPCUQK",
+      "user": "U1YUALNLD",
+      "text": "Hit enter to sen#nowd.",
+      "ts": "1471058307.000002",
+      "team": "T1YU0S4TE",
+      "unread": true
+    },
+    {
+      "type": "message",
+      "channel": "C1YSPCUQK",
+      "user": "U1YUALNLD",
+      "text": "sup #now?",
+      "ts": "1471058724.000004",
+      "team": "T1YU0S4TE",
+      "unread": true
+    },
+    {
+      "type": "message",
+      "channel": "C1YSPCUQK",
+      "user": "U1YUALNLD",
+      "text": "so? #now",
+      "ts": "1471058884.000005",
+      "team": "T1YU0S4TE",
+      "unread": true
+    },
+    {
+      "type": "message",
+      "channel": "C1YSPCUQK",
+      "user": "U1YUALNLD",
+      "text": "dan #now",
+      "ts": "1471058955.000006",
+      "team": "T1YU0S4TE",
+      "unread": true
+    }
+  ],
+  "user": {}
+}

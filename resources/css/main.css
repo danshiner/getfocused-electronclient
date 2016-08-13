@@ -1,0 +1,53 @@
+html, body {
+  background: rgba(0, 0, 0, 0);
+  font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 0.9em;
+}
+
+body {
+  margin: 0px;
+}
+
+.main-container {
+  /*margin: 0px 5px 5px 5px;*/
+  /*padding: 8px 0px 8px 0px;*/
+}
+
+.wrapper {
+  background-color: white;
+  box-shadow: 5px rgba(0,0,0,0.4);
+}
+
+.wrapper:before {
+  border-bottom: 14px solid #EFEFEF;
+  border-right: 14px solid transparent;
+  border-left: 14px solid transparent;
+  top: 3px;
+  content: '';
+  display: block;
+  left: 50%;
+  margin-left: -14px;
+  position: absolute;
+}
+
+.header {
+  margin-top: 17px;
+  background-color: #EFEFEF;
+  padding: 5px;
+  height: 28px;
+  border-bottom: 1px solid #D4D4D4;
+  text-align: center;
+  line-height: 28px;
+}
+
+.message {
+  border-bottom: 1px solid #D4D4D4;
+  padding: 10px
+}
+
+.message p {
+  margin: 5px
+}
