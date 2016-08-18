@@ -12,11 +12,6 @@ const low = require('lowdb');
 const fileAsync = require('lowdb/lib/file-async');
 const db = low('db.json', { storage: require('lowdb/lib/file-async') });
 
-// const db = function(){
-//   return low('db.json', { storage: require('lowdb/lib/file-async')})
-// };
-
-
 // Create menubar
 let options = {
   //note, menubar does not like file:// on the icon argument, but does on the index
@@ -28,7 +23,6 @@ let options = {
   preloadWindow: true //Necessary so that messages are loaded as soon as app is opened.
 };
 // add   transparent: true for transparent BG
-
 
 var mb = menubar(options);
 
@@ -48,7 +42,7 @@ mb.on('ready', function ready() {
 
   // When show-prefs is received, create a new browser window for preferences
   ipcMain.on('show-prefs', function(){
-    let prefsWindow = new BrowserWindow({ width: 400, height: 400 });
+    let prefsWindow = new BrowserWindow({ width: 400, height: 250 });
     prefsWindow.loadURL(`file://${__dirname}/views/prefs.html`);
   });
   // When quit is received, quit the app.
@@ -67,7 +61,6 @@ mb.on('ready', function ready() {
   mb.on('show', function(){
     messages = db.get('messages').value();
     mb.window.webContents.send('update', messages);
-    console.log(messages);
   });
   // Mark all messages as read after show
   mb.on('after-show', function(){

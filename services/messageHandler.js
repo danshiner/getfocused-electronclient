@@ -1,6 +1,8 @@
 const RtmClient = require('@slack/client').RtmClient;
 const messageEmitter = new (require('events').EventEmitter);
-const token = 'xoxp-66952888932-66962702693-67830999317-c6843cf293';
+// const token = 'xoxp-66952888932-66962702693-67830999317-c6843cf293';
+const token = 'xoxp-66952888932-66962702693-69213785557-7cda96f0ce';
+const https = require("https");
 
 // For sending messages
 const RTM_CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS.RTM;
@@ -15,7 +17,11 @@ const db = low('db.json', { storage: require('lowdb/lib/file-async') });
 // Create tables
 db.defaults({ messages : [], user: {} }).value();
 
+// Get users list
+const usersList = getUsersList()
+
 function launchRtmClient(db){
+
   // Start the RTM client
   var RTM_EVENTS = require('@slack/client').RTM_EVENTS;
   rtm.start();
@@ -60,11 +66,25 @@ function addMessage(db, message){
   messageEmitter.emit('new', message);
 }
 
+function getUsersList(){
+  // Not working yet! Not returning the object I want.
+  // https.get(`https://slack.com/api/users.list?token=${token}`, (res) => {
+  //   console.log(`Got response: ${res.statusCode}`);
+  //   res.on('data', function(d){
+  //     console.log(d);
+  //   })
+  //   res.resume();
+  // }).on('error', (e) => {
+  //   console.log(`Got error: ${e.message}`);
+  // });
+};
+
 // Come back and add multi-OS support when you have time https://github.com/mikaelbr/node-notifier#use-inside-tmux-session
 
 module.exports = {
   launchRtmClient : launchRtmClient,
   addMessage : addMessage,
   sendMessage : sendMessage,
-  messageEmitter : messageEmitter
+  messageEmitter : messageEmitter,
+  usersList : usersList
 };
